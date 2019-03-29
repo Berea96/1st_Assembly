@@ -1,9 +1,22 @@
+TITLE MASM Template					(helloworld.asm)
+
+; Description:
+; 
+; Revision date:
+
+INCLUDE Irvine32.inc
+
 .data
-	message db "Hello world", 0
+myMessage BYTE "MASM program example",0dh,0ah,0
 
 .code
+main PROC
+    call Clrscr
 
-main:
-	invoke StdOut, addr message
-	invoke ExitProcess, 0
-end Main
+    mov  edx,OFFSET myMessage
+    call WriteString
+
+    exit
+main ENDP
+
+END main
